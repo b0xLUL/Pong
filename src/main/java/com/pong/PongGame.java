@@ -2,9 +2,10 @@ package com.pong;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import com.pong.scenes.GameLevel;
+import com.pong.scenes.TitleScene;
 
 public class PongGame extends YaegerGame {
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -17,6 +18,7 @@ public class PongGame extends YaegerGame {
 
     @Override
     public void setupScenes() {
-
+        addScene(0, new TitleScene());
+        addScene(1, new GameLevel());
     }
 }
