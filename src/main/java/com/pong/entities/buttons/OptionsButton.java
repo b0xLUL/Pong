@@ -1,4 +1,4 @@
-package com.pong.entities;
+package com.pong.entities.buttons;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -13,12 +13,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class StartButton extends TextEntity implements MouseEnterListener, MouseExitListener, MouseButtonPressedListener {
+public class OptionsButton extends TextEntity implements MouseEnterListener, MouseExitListener, MouseButtonPressedListener {
 
     private final PongGame pongGameObject;
 
-    public StartButton(Coordinate2D initialLocation, PongGame pongGameObject) {
-        super(initialLocation, "Play");
+    public OptionsButton(Coordinate2D initialLocation, PongGame pongGameObject) {
+        super(initialLocation, "Options");
 
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         setFill(Color.PURPLE);
@@ -29,7 +29,7 @@ public class StartButton extends TextEntity implements MouseEnterListener, Mouse
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        pongGameObject.setActiveScene(1);
+        pongGameObject.setActiveScene(2);
     }
 
     @Override
