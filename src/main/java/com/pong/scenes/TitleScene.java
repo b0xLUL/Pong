@@ -32,7 +32,8 @@ public class TitleScene extends StaticScene {
                 "Pong"
         );
         var startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100)
+                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100),
+                pongGameObject
         );
         var optionsButton = new OptionsButton(
                 new Coordinate2D(getWidth() / 2, (getHeight() /2 ) + 140),
