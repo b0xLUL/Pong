@@ -2,18 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>nl.han</groupId>
-    <artifactId>yaeger-showcase</artifactId>
-    <version>2021.2022.1</version>
+    <groupId>com.pong</groupId>
+    <artifactId>Pong</artifactId>
+    <version>2022.2023</version>
     <packaging>jar</packaging>
 
-    <name>yaeger-showcase</name>
-    <description>An implementation of Yaeger, displaying all features of Yaeger</description>
-    <url>https://github.com/han-yaeger/yaeger-showcase</url>
+    <name>Pong</name>
+    <description>A simple game made with YAEGER Game Engine</description>
+    <url>https://github.com/Melsubbink/Pong</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>16</java.version>
+        <java.version>18</java.version>
     </properties>
 
     <build>
@@ -40,7 +40,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>nl.han.showcase.YaegerShowCase</mainClass>
+                    <mainClass>com.pong.PongGame</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.github.han-yaeger</groupId>
             <artifactId>yaeger</artifactId>
-            <version>2021.2022.3</version>
+            <version>2022.2023</version>
         </dependency>
     </dependencies>
 </project>
