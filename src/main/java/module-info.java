@@ -3,6 +3,7 @@ module com.pong {
 
     exports com.pong;
     exports com.pong.scenes;
+    exports com.pong.entities.buttons;
 
 //    opens audio;
 //    opens entities;
