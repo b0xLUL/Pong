@@ -5,17 +5,19 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.pong.PongGame;
+import com.pong.entities.ExitButton;
+import com.pong.entities.OptionsButton;
 import com.pong.entities.StartButton;
-import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
-    private PongGame pongGame;
 
-    public TitleScene(PongGame pongGame) {
-        this.pongGame = pongGame;
+    private final PongGame pongGameObject;
+
+    public TitleScene(PongGame pongGameObject) {
+        this.pongGameObject = pongGameObject;
     }
 
     @Override
@@ -29,20 +31,25 @@ public class TitleScene extends StaticScene {
                 new Coordinate2D(getWidth() / 2, getHeight() / 2),
                 "Pong"
         );
+        var startButton = new StartButton(
+                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100)
+        );
+        var optionsButton = new OptionsButton(
+                new Coordinate2D(getWidth() / 2, (getHeight() /2 ) + 140),
+                pongGameObject
+        );
+        var exitButton = new ExitButton(
+                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 180)
+        );
 
         mainText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         mainText.setFill(Color.DARKBLUE);
         mainText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
 
-        var startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100)
-        );
-
         addEntity(mainText);
         addEntity(startButton);
-    }
+        addEntity(optionsButton);
+        addEntity(exitButton);
 
-    public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
-        pongGame.setActiveScene(1);
     }
 }
