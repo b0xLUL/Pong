@@ -1,10 +1,16 @@
 package com.pong.scenes;
 
+import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.pong.entities.PongBall;
 
 public class GameLevel extends DynamicScene {
-    public GameLevel() {
+    protected PongBall[] pongBalls;
 
+    public GameLevel() {
+        pongBalls = new PongBall[] {
+                new PongBall(new Coordinate2D(10, 10), 10)
+        };
     }
 
     @Override
@@ -14,6 +20,6 @@ public class GameLevel extends DynamicScene {
 
     @Override
     public void setupEntities() {
-
+        addEntity(pongBalls[0]);
     }
 }
