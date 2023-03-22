@@ -4,14 +4,18 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
+import com.pong.PongGame;
 import com.pong.entities.StartButton;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
-    public TitleScene() {
+    private PongGame pongGame;
 
+    public TitleScene(PongGame pongGame) {
+        this.pongGame = pongGame;
     }
 
     @Override
@@ -36,5 +40,9 @@ public class TitleScene extends StaticScene {
 
         addEntity(mainText);
         addEntity(startButton);
+    }
+
+    public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
+        pongGame.setActiveScene(1);
     }
 }
