@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 
 public class OptionsButton extends TextEntity implements MouseEnterListener, MouseExitListener, MouseButtonPressedListener {
 
-    private PongGame pongGameObject;
+    private final PongGame pongGameObject;
 
     public OptionsButton(Coordinate2D initialLocation, PongGame pongGameObject) {
         super(initialLocation, "Options");

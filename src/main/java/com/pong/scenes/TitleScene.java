@@ -14,7 +14,7 @@ import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
 
-    private PongGame pongGameObject;
+    private final PongGame pongGameObject;
 
     public TitleScene(PongGame pongGameObject) {
         this.pongGameObject = pongGameObject;
