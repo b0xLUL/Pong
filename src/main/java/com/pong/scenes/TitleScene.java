@@ -27,25 +27,10 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        //Title-text
-        var titleText = new TextEntity(
-                new Coordinate2D(getWidth() / 2, getHeight() / 2),
-                "Pong"
-        );
-        //start button
-        var startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100),
-                pongGameObject
-        );
-        //optionsbutton
-        var optionsButton = new OptionsButton(
-                new Coordinate2D(getWidth() / 2, (getHeight() /2 ) + 140),
-                pongGameObject
-        );
-        //exitbutton
-        var exitButton = new ExitButton(
-                new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 180)
-        );
+        var titleText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Pong");
+        var startButton = new StartButton(new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 100), pongGameObject);
+        var optionsButton = new OptionsButton(new Coordinate2D(getWidth() / 2, (getHeight() /2 ) + 140), pongGameObject);
+        var exitButton = new ExitButton(new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 180));
 
         //settings voor de titletext
         titleText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
