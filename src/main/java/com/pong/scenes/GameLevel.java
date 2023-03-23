@@ -25,7 +25,7 @@ public class GameLevel extends DynamicScene {
         pongBalls.add(new PongBall(new Coordinate2D(getWidth()/2, getHeight()/2),10 ));
 
         addEntity(new PlayerPaddle(new Coordinate2D(5, 100)));
-        addEntity(new ComputerPaddle(new Coordinate2D(getWidth() - 25, 100)));
+        addEntity(new ComputerPaddle(new Coordinate2D(getWidth() - 25, 100), this));
         addEntity(pongBalls.get(0));
     }
 }

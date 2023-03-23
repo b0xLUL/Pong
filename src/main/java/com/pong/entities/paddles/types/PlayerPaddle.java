@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class PlayerPaddle extends Paddle implements KeyListener {
+
     public PlayerPaddle(Coordinate2D initialPosition) {
         super(initialPosition);
     }

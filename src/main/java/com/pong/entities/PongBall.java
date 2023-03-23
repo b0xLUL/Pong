@@ -7,8 +7,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import javafx.scene.paint.Color;
 
-import java.util.Random;
-
 public class PongBall extends DynamicCircleEntity implements SceneBorderCrossingWatcher, Collider {
 
     public PongBall(Coordinate2D initialLocation, double radius) {
@@ -21,12 +19,11 @@ public class PongBall extends DynamicCircleEntity implements SceneBorderCrossing
 
     public void notifyBoundaryCrossing(SceneBorder border) {
         if (border == SceneBorder.TOP || border == SceneBorder.BOTTOM) {
-            inverseDirection();
-            System.out.println(getDirection());
+            bounceBall( border == SceneBorder.TOP ? 180 : -180 );
         }
     }
 
-    public void inverseDirection() {
-        setDirection( getDirection() * -1 );
+    public void bounceBall(double angleOfHit) {
+        setDirection(angleOfHit - getDirection());
     }
 }

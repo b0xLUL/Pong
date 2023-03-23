@@ -31,7 +31,7 @@ public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchin
     public void onCollision(List<Collider> colliders) {
         for (Collider c : colliders) {
             if (c instanceof PongBall pongBall) {
-                pongBall.inverseDirection();
+                pongBall.bounceBall( getDirection() );
                 pongBall.setSpeed( pongBall.getSpeed() + (getSpeed()/2) );
             }
         }
