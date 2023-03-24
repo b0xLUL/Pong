@@ -3,35 +3,49 @@ package com.pong.shared.records;
 public record Score() {
     private static int playerScore;
     private static int computerScore;
+    private static int highScore;
 
     private static final int defaultPlayerScore = 0;
     private static final int defaultComputerScore = 0;
+    private static final int defaultHighScore = 0;
 
-    public static int getPlayerScore() {
+    public int getPlayerScore() {
         return playerScore;
     }
 
-    public static void setPlayerScore(int playerScore) {
+    public void setPlayerScore(int playerScore) {
         Score.playerScore = playerScore;
     }
 
-    public static int getComputerScore() {
+    public int getComputerScore() {
         return computerScore;
     }
 
-    public static void setComputerScore(int computerScore) {
+    public void setComputerScore(int computerScore) {
         Score.computerScore = computerScore;
     }
 
-    public static int getDefaultPlayerScore() {
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        Score.highScore = highScore;
+    }
+
+    public int getDefaultPlayerScore() {
         return defaultPlayerScore;
     }
 
-    public static int getDefaultComputerScore() {
+    public int getDefaultComputerScore() {
         return defaultComputerScore;
     }
 
+    public int getDefaultHighScore() {
+        return defaultHighScore;
+    }
+
     public String getDefaultScores() {
-        return defaultPlayerScore + " " + defaultComputerScore;
+        return defaultPlayerScore + " " + defaultComputerScore + " " + defaultHighScore;
     }
 }
