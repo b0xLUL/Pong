@@ -1,13 +1,14 @@
 package com.pong.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import javafx.scene.paint.Color;
 
-public class PongBall extends DynamicCircleEntity implements SceneBorderCrossingWatcher, Collider {
+public class PongBall extends DynamicCircleEntity implements Collider, UpdateExposer {
 
     public PongBall(Coordinate2D initialLocation, double radius) {
         super(initialLocation);
@@ -17,9 +18,21 @@ public class PongBall extends DynamicCircleEntity implements SceneBorderCrossing
         setMotion(2,-70);
     }
 
-    public void notifyBoundaryCrossing(SceneBorder border) {
-        if (border == SceneBorder.TOP || border == SceneBorder.BOTTOM) {
-            bounceBall( border == SceneBorder.TOP ? 180 : -180 );
+    @Override
+    public void explicitUpdate(long timestamp) {
+        double currentY = getAnchorLocation().getY();
+        double currentX = getAnchorLocation().getX();
+
+        if (currentY + getRadius() > getSceneHeight()) {
+            bounceBall(-180);
+        } else if (currentY < -getRadius()) {
+            bounceBall(180);
+        }
+
+        if (currentX > getSceneWidth() - getRadius()) {
+//            Player scored a point
+        } else if (currentX < 0) {
+//            Computer scored a point
         }
     }
 
