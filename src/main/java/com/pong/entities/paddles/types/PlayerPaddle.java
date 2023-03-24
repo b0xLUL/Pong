@@ -16,9 +16,9 @@ public class PlayerPaddle extends Paddle implements KeyListener {
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotion(3, 0d);
+            setMotion(this.paddleSpeed, 0d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotion(3, 180d);
+            setMotion(this.paddleSpeed, 180d);
         } else {
             setSpeed(0);
         }

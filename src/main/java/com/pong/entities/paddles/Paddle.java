@@ -12,6 +12,9 @@ import com.pong.entities.PongBall;
 import java.util.List;
 
 public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchingWatcher, Collided {
+
+    public double paddleSpeed = 5;
+
     public Paddle(Coordinate2D initialPosition) {
         super(initialPosition, new Size(10, 100));
     }
@@ -31,7 +34,7 @@ public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchin
     public void onCollision(List<Collider> colliders) {
         for (Collider c : colliders) {
             if (c instanceof PongBall pongBall) {
-                pongBall.bounceBall( getDirection() );
+                pongBall.bounceBall( 0 );
                 pongBall.setSpeed( pongBall.getSpeed() + (getSpeed()/2) );
             }
         }
