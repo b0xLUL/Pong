@@ -29,12 +29,20 @@ public class PongGame extends YaegerGame {
         setGameTitle("Pong");
 
         settingFile = new FileHandler("settings.txt");
+        scoreFile = new FileHandler("score.txt");
 
         if (!settingFile.FileExists()) {
             SettingsRecord = new Settings();
             setupFiles(settingFile, SettingsRecord.getDefaultVolume());
         } else {
             readToRecord(SettingsRecord, settingFile);
+        }
+
+        if(!scoreFile.FileExists()) {
+            ScoreRecord = new Score();
+            setupFiles(scoreFile, ScoreRecord.getDefaultScores());
+        } else {
+            readToRecord(ScoreRecord, scoreFile);
         }
     }
 
@@ -44,6 +52,10 @@ public class PongGame extends YaegerGame {
         addScene(1, new GameLevel());
         addScene(2, new OptionsMenu());
         addScene(3, new PauseMenu());
+    }
+
+    private void readToRecord(Record record, FileHandler recordFile) {
+        System.out.println(recordFile.getFileName() + " already exists, writing existing settings to record..");
     }
 
     private void setupFiles(FileHandler setupFile, String defaultValues) {
