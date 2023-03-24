@@ -61,8 +61,25 @@ public class FileHandler {
      * ArrayList of Strings to write to the file
      */
     public void WriteFile(ArrayList<String> valueList) {
-        for(String value : valueList) {
-            WriteFile(value);
+
+        try {
+            FileWriter file = new FileWriter(this.fileName);
+
+            for(String value : valueList) {
+                var trimmedText = value.trim();
+
+                file.write(trimmedText);
+                file.write("\n");
+            }
+
+            file.close();
+            System.out.println("Write of " + fileName + " successful");
+
+        } catch(IOException e) {
+
+            System.out.println("an error occurred trying to write to the file");
+            e.printStackTrace();
+
         }
     }
 
