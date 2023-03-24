@@ -3,19 +3,30 @@ package com.pong.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
-import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.pong.scenes.GameLevel;
 import javafx.scene.paint.Color;
+
+import java.util.Random;
 
 public class PongBall extends DynamicCircleEntity implements Collider, UpdateExposer {
 
-    public PongBall(Coordinate2D initialLocation, double radius) {
+    public GameLevel gameLevelObject;
+    public Random r;
+
+    public PongBall(Coordinate2D initialLocation, double radius, GameLevel gameLevelObject) {
         super(initialLocation);
+
+        r = new Random();
+
+        int dir = r.nextInt(0, 2) == 1 ? 1 : -1;
+        int angle = r.nextInt(90-45, 90+45);
 
         setFill(Color.RED);
         setRadius(radius);
-        setMotion(2,-70);
+        setMotion(2,angle * dir);
+
+        this.gameLevelObject = gameLevelObject;
     }
 
     @Override
@@ -30,9 +41,9 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
         }
 
         if (currentX > getSceneWidth() - getRadius()) {
-//            Player scored a point
+            gameLevelObject.playerScored();
         } else if (currentX < 0) {
-//            Computer scored a point
+            gameLevelObject.computerScored();
         }
     }
 

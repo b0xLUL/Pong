@@ -1,10 +1,8 @@
 package com.pong.entities.paddles.types;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.pong.entities.PongBall;
 import com.pong.entities.paddles.Paddle;
 import com.pong.scenes.GameLevel;
