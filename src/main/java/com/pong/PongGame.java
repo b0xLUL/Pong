@@ -6,16 +6,18 @@ import com.pong.scenes.GameLevel;
 import com.pong.scenes.OptionsMenu;
 import com.pong.scenes.PauseMenu;
 import com.pong.scenes.TitleScene;
-import com.pong.shared.defaults.DefaultSettings;
+import com.pong.shared.records.Score;
+import com.pong.shared.records.Settings;
 import com.pong.shared.util.FileHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PongGame extends YaegerGame {
-
-    public DefaultSettings Settings;
+    public Settings SettingsRecord;
+    public Score ScoreRecord;
     private static FileHandler settingFile;
+    private static FileHandler scoreFile;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,9 +30,11 @@ public class PongGame extends YaegerGame {
 
         settingFile = new FileHandler("settings.txt");
 
-        if(!settingFile.FileExists()) {
-            Settings = new DefaultSettings();
-            setupFiles(settingFile, Settings.toString());
+        if (!settingFile.FileExists()) {
+            SettingsRecord = new Settings();
+            setupFiles(settingFile, SettingsRecord.getDefaultVolume());
+        } else {
+            readToRecord(SettingsRecord, settingFile);
         }
     }
 
