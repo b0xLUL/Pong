@@ -17,6 +17,10 @@ public record Settings() {
         return volume;
     }
 
+    public String getVolumeInString() {
+        return volume + "";
+    }
+
     public void setVolume(double volume) {
         Settings.volume = volume;
     }
