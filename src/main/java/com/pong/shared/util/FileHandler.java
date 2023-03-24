@@ -112,4 +112,8 @@ public class FileHandler {
         return file.exists();
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
 }
