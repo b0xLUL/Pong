@@ -17,6 +17,7 @@ public class PongGame extends YaegerGame {
     public Settings SettingsRecord;
     public Score ScoreRecord;
     public FileHandler settingFile;
+    public FileHandler scoreFile;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,7 +29,7 @@ public class PongGame extends YaegerGame {
         setGameTitle("Pong");
 
         settingFile = new FileHandler("settings.txt");
-        FileHandler scoreFile = new FileHandler("score.txt");
+        scoreFile = new FileHandler("score.txt");
         SettingsRecord = new Settings();
         ScoreRecord = new Score();
 
@@ -48,7 +49,7 @@ public class PongGame extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene(this));
-        addScene(1, new GameLevel(this));
+        addScene(1, new GameLevel(this, scoreFile));
         addScene(2, new OptionsMenu(this, settingFile));
         addScene(3, new PauseMenu());
     }

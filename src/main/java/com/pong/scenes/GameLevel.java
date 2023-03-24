@@ -9,18 +9,19 @@ import com.pong.entities.ScoreText;
 import com.pong.entities.paddles.types.ComputerPaddle;
 import com.pong.entities.paddles.types.PlayerPaddle;
 import com.pong.shared.records.Score;
+import com.pong.shared.util.FileHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Set;
 
 public class GameLevel extends DynamicScene implements KeyListener {
     public ArrayList<PongBall> pongBalls = new ArrayList<>();
     public PongGame pongGameObject;
-    private Score scoreRecord;
+    private final Score scoreRecord;
+    private final FileHandler scoreFile;
 
     public ScoreText playerScoreText;
     public ScoreText computerScoreText;
@@ -29,9 +30,11 @@ public class GameLevel extends DynamicScene implements KeyListener {
     public PlayerPaddle playerPaddle;
     public ComputerPaddle computerPaddle;
 
-    public GameLevel(PongGame pongGameObject) {
+    public GameLevel(PongGame pongGameObject, FileHandler scoreFile) {
         this.pongGameObject = pongGameObject;
         scoreRecord = pongGameObject.ScoreRecord;
+
+        this.scoreFile = scoreFile;
     }
 
     @Override
@@ -68,10 +71,7 @@ public class GameLevel extends DynamicScene implements KeyListener {
         }
     }
 
-
-
     public void createPongBall() {
-        Random r = new Random();
 
         pongBalls.add(new PongBall(
            new Coordinate2D(getWidth()/2, getHeight()/2),
@@ -115,7 +115,16 @@ public class GameLevel extends DynamicScene implements KeyListener {
     public void updateHighScore() {
         if (scoreRecord.getPlayerScore() > scoreRecord.getHighScore()) {
             scoreRecord.setHighScore(scoreRecord.getPlayerScore());
-            highScoreText.setText( "Highscore: " + scoreRecord.getHighScore() );
+            highScoreText.setText("Highscore: " + scoreRecord.getHighScore());
+
+            ArrayList<String> scores = new ArrayList<>();
+            scores.add("0");
+            scores.add("0");
+            scores.add(scoreRecord.getPlayerScore() + "");
+
+            if(scoreFile.FileExists()) {
+                scoreFile.WriteFile(scores);
+            }
         }
     }
 }
