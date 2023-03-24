@@ -13,11 +13,11 @@ public record Settings() {
         return DefaultVolume + " ";
     }
 
-    public static double getVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public static void setVolume(double volume) {
+    public void setVolume(double volume) {
         Settings.volume = volume;
     }
 }
