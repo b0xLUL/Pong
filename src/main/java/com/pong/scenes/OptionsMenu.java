@@ -3,6 +3,7 @@ package com.pong.scenes;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.pong.PongGame;
+import com.pong.entities.settings.ExitSettings;
 import com.pong.entities.settings.volumeadjust.TopText;
 import com.pong.entities.settings.volumeadjust.audiosetting.VolumeText;
 import com.pong.entities.settings.volumeadjust.audiosetting.buttons.DecreaseButton;
@@ -53,12 +54,17 @@ public class OptionsMenu extends DynamicScene {
                 settingsFile,
                 this
         );
+        ExitSettings exitSettingsButton = new ExitSettings(
+                new Coordinate2D(getWidth() / 2, getHeight() - 45),
+                pongGameObject
+        );
 
         addEntity(topText);
         addEntity(audioSettingText);
         addEntity(currentVolumeText);
         addEntity(volumeDecreaseButton);
         addEntity(volumeIncreaseButton);
+        addEntity(exitSettingsButton);
     }
 
     public void settingsUpdated() {
