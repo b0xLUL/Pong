@@ -18,6 +18,8 @@ public class OptionsMenu extends DynamicScene {
     private final Settings settingsRecord;
     private final FileHandler settingsFile;
 
+    private VolumeText currentVolumeText;
+
     public OptionsMenu(PongGame pongGameObject, FileHandler settingsFile) {
         this.pongGameObject = pongGameObject;
         this.settingsRecord = pongGameObject.SettingsRecord;
@@ -35,19 +37,21 @@ public class OptionsMenu extends DynamicScene {
 
         TopText topText = new TopText(new Coordinate2D(getWidth() / 2, 45));
         SettingText audioSettingText = new SettingText(new Coordinate2D(getWidth() / 5, getHeight() / 4));
-        VolumeText currentVolumeText = new VolumeText(
+        currentVolumeText = new VolumeText(
                 new Coordinate2D((getWidth() / 5) + 250, getHeight() / 4),
                 settingsRecord.getVolumeInString()
         );
         DecreaseButton volumeDecreaseButton = new DecreaseButton(
                 new Coordinate2D((getWidth() / 5) + 300, getHeight() / 4),
                 settingsRecord,
-                settingsFile
+                settingsFile,
+                this
         );
         IncreaseButton volumeIncreaseButton = new IncreaseButton(
                 new Coordinate2D((getWidth() / 5) + 320, getHeight() / 4),
                 settingsRecord,
-                settingsFile
+                settingsFile,
+                this
         );
 
         addEntity(topText);
@@ -55,5 +59,10 @@ public class OptionsMenu extends DynamicScene {
         addEntity(currentVolumeText);
         addEntity(volumeDecreaseButton);
         addEntity(volumeIncreaseButton);
+    }
+
+    public void settingsUpdated() {
+        currentVolumeText.setText(settingsRecord.getVolumeInString());
+        System.out.println(settingsRecord.getVolume());
     }
 }

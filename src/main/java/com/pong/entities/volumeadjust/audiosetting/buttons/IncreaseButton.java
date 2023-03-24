@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
+import com.pong.scenes.OptionsMenu;
 import com.pong.shared.records.Settings;
 import com.pong.shared.util.FileHandler;
 import javafx.scene.Cursor;
@@ -18,11 +19,13 @@ public class IncreaseButton extends DynamicTextEntity implements MouseButtonPres
 
     private final Settings settingsRecord;
     private final FileHandler settingsFile;
+    private final OptionsMenu optionsMenuObject;
 
-    public IncreaseButton(Coordinate2D initialLocation, Settings settingsRecord, FileHandler settingsFile) {
+    public IncreaseButton(Coordinate2D initialLocation, Settings settingsRecord, FileHandler settingsFile, OptionsMenu optionsMenuObject) {
         super(initialLocation, "+");
         this.settingsRecord = settingsRecord;
         this.settingsFile = settingsFile;
+        this.optionsMenuObject = optionsMenuObject;
 
         setFill(Color.WHITE);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
@@ -37,7 +40,7 @@ public class IncreaseButton extends DynamicTextEntity implements MouseButtonPres
         if(settingsFile.FileExists()) {
             settingsFile.WriteFile(settingsRecord.getVolume() + "");
         }
-        System.out.println(settingsRecord.getVolume());
+        optionsMenuObject.settingsUpdated();
     }
 
     @Override
