@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class PongGame extends YaegerGame {
     public Settings SettingsRecord;
     public Score ScoreRecord;
+    public FileHandler settingFile;
 
     public static void main(String[] args) {
         launch(args);
@@ -26,7 +27,7 @@ public class PongGame extends YaegerGame {
         setSize(new Size(800, 600));
         setGameTitle("Pong");
 
-        FileHandler settingFile = new FileHandler("settings.txt");
+        settingFile = new FileHandler("settings.txt");
         FileHandler scoreFile = new FileHandler("score.txt");
         SettingsRecord = new Settings();
         ScoreRecord = new Score();
@@ -48,7 +49,7 @@ public class PongGame extends YaegerGame {
     public void setupScenes() {
         addScene(0, new TitleScene(this));
         addScene(1, new GameLevel(this));
-        addScene(2, new OptionsMenu());
+        addScene(2, new OptionsMenu(this, settingFile));
         addScene(3, new PauseMenu());
     }
 

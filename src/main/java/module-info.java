@@ -6,6 +6,7 @@ module com.pong {
     exports com.pong.entities.buttons;
     exports com.pong.entities.paddles;
     exports com.pong.entities;
+    exports com.pong.shared.util;
     exports com.pong.shared.buttons;
     exports com.pong.shared.records;
 
