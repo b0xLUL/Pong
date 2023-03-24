@@ -17,7 +17,7 @@ public class FileHandler {
 
     public void CreateFile() {
         try {
-            var file = new File(this.fileName);
+            File file = new File(this.fileName);
 
             if (file.createNewFile()) {
                 System.out.println("Created File: " + file.getName());
@@ -30,19 +30,46 @@ public class FileHandler {
         }
     }
 
+    /**
+     * writes a single string to a file
+     * @param writeText
+     * the text to be written to the file
+     */
     public void WriteFile(String writeText) {
         try {
-            var file = new FileWriter(this.fileName);
+            FileWriter file = new FileWriter(this.fileName);
 
-            file.write(writeText);
+            var trimmedText = writeText.trim();
+
+            file.write(trimmedText);
+            file.write("\n");
+
             file.close();
             System.out.println("Write of " + fileName + " successful");
+
         } catch(IOException e) {
+
             System.out.println("an error occurred trying to write to the file");
             e.printStackTrace();
+
         }
     }
 
+    /**
+     * Writes the values of an arraylist to a file
+     * @param valueList
+     * ArrayList of Strings to write to the file
+     */
+    public void WriteFile(ArrayList<String> valueList) {
+        for(String value : valueList) {
+            WriteFile(value);
+        }
+    }
+
+    /**
+     * Reads the file and returns the lines as an ArrayList
+     * @return ArrayList<String> lines
+     */
     public ArrayList<String> ReadFile() {
         ArrayList<String> lines = new ArrayList<>();
 
@@ -53,13 +80,19 @@ public class FileHandler {
             while(fileReader.hasNextLine())
             {
                 String data = fileReader.nextLine();
-                lines.add(data);
+                String trimmedData = data.trim();
+                lines.add(trimmedData);
             }
         } catch(FileNotFoundException e) {
             System.out.println("An error occurred while reading the file " + this.fileName);
         }
 
         return lines;
+    }
+
+    public boolean FileExists() {
+        File file = new File(this.fileName);
+        return file.exists();
     }
 
 }
