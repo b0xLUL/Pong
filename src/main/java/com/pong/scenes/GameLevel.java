@@ -25,16 +25,21 @@ public class GameLevel extends DynamicScene {
 
     @Override
     public void setupEntities() {
-        for (int i = 0; i < 1; i++) {
-            createPongBall();
-        }
-
+        setPongBalls();
         addEntity(new PlayerPaddle(new Coordinate2D(5, 100)));
         addEntity(new ComputerPaddle(new Coordinate2D(getWidth() - 25, 100), this));
     }
 
-    public void resetPongBalls() {
+    public void setPongBalls() {
+        for (PongBall pongBall : pongBalls) {
+            pongBall.remove();
+        }
 
+        pongBalls.clear();
+
+        for (int i = 0; i < 1; i++) {
+            createPongBall();
+        }
     }
 
     public void createPongBall() {
@@ -56,10 +61,10 @@ public class GameLevel extends DynamicScene {
     }
 
     public void playerScored() {
-
+        setPongBalls();
     }
 
     public void computerScored() {
-
+        setPongBalls();
     }
 }
