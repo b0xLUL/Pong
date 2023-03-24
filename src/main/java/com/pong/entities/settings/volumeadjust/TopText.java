@@ -1,4 +1,4 @@
-package com.pong.entities.volumeadjust;
+package com.pong.entities.settings.volumeadjust;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
