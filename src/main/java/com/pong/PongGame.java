@@ -4,7 +4,6 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import com.pong.scenes.GameLevel;
 import com.pong.scenes.OptionsMenu;
-import com.pong.scenes.PauseMenu;
 import com.pong.scenes.TitleScene;
 import com.pong.shared.records.Score;
 import com.pong.shared.records.Settings;
@@ -51,7 +50,6 @@ public class PongGame extends YaegerGame {
         addScene(0, new TitleScene(this));
         addScene(1, new GameLevel(this, scoreFile));
         addScene(2, new OptionsMenu(this, settingFile));
-        addScene(3, new PauseMenu());
     }
 
     private void readToSettingsRecord(Settings record, FileHandler recordFile) {
