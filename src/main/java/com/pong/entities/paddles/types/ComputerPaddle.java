@@ -23,15 +23,15 @@ public class ComputerPaddle extends Paddle implements Collider, UpdateExposer {
     private void moveToPongBall() {
         PongBall closestPongBall = getClosestPongBall();
 
-        double thisLocationY = this.getAnchorLocation().getY();
+        double thisLocationY = this.getAnchorLocation().getY() + this.getHeight()/2;
         double ballLocationY = closestPongBall.getAnchorLocation().getY();
 
         if (thisLocationY < ballLocationY) {
-            setMotion(this.paddleSpeed, 0d);
+            setMotion(this.paddleSpeed * this.computerSpeedMultiplier, 0d);
         } else if (thisLocationY > ballLocationY) {
-            setMotion(this.paddleSpeed, 180d);
+            setMotion(this.paddleSpeed * this.computerSpeedMultiplier, 180d);
         } else {
-//            setSpeed(0);
+            setSpeed(0);
         }
     }
 

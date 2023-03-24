@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
+import com.pong.entities.paddles.Paddle;
 import com.pong.scenes.GameLevel;
 import javafx.scene.paint.Color;
 
@@ -24,7 +25,7 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
 
         setFill(Color.RED);
         setRadius(radius);
-        setMotion(2,angle * dir);
+        setMotion(4,angle * dir);
 
         this.gameLevelObject = gameLevelObject;
     }
@@ -49,5 +50,10 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
 
     public void bounceBall(double angleOfHit) {
         setDirection(angleOfHit - getDirection());
+    }
+
+    public void collidedWithPaddle(Paddle collidingPaddle) {
+        bounceBall(0);
+        setSpeed(getSpeed() + (collidingPaddle.getSpeed()/4));
     }
 }

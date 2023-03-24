@@ -1,5 +1,6 @@
 package com.pong.entities.paddles;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -13,10 +14,14 @@ import java.util.List;
 
 public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchingWatcher, Collided {
 
-    public double paddleSpeed = 5;
+    Coordinate2D initialPosition;
+
+    public double paddleSpeed = 8;
+    public double computerSpeedMultiplier = .9;
 
     public Paddle(Coordinate2D initialPosition) {
-        super(initialPosition, new Size(10, 100));
+        super(initialPosition, new Size(30, 100));
+        this.initialPosition = initialPosition;
     }
 
     @Override
@@ -34,9 +39,12 @@ public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchin
     public void onCollision(List<Collider> colliders) {
         for (Collider c : colliders) {
             if (c instanceof PongBall pongBall) {
-                pongBall.bounceBall( 0 );
-                pongBall.setSpeed( pongBall.getSpeed() + (getSpeed()/2) );
+                pongBall.collidedWithPaddle(this);
             }
         }
+    }
+
+    public void resetPosition() {
+        setAnchorLocation(initialPosition);
     }
 }
