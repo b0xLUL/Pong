@@ -22,7 +22,7 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupScene() {
-
+        setBackgroundColor(Color.BLACK);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class TitleScene extends StaticScene {
 
         //settings voor de titletext
         titleText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        titleText.setFill(Color.DARKBLUE);
+        titleText.setFill(Color.BLUE);
         titleText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
 
         addEntity(titleText);
