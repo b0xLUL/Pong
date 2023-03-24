@@ -30,16 +30,16 @@ public class PongGame extends YaegerGame {
 
         settingFile = new FileHandler("settings.txt");
         scoreFile = new FileHandler("score.txt");
+        SettingsRecord = new Settings();
+        ScoreRecord = new Score();
 
         if (!settingFile.FileExists()) {
-            SettingsRecord = new Settings();
             setupFiles(settingFile, SettingsRecord.getDefaultVolume());
         } else {
             readToRecord(SettingsRecord, settingFile);
         }
 
         if(!scoreFile.FileExists()) {
-            ScoreRecord = new Score();
             setupFiles(scoreFile, ScoreRecord.getDefaultScores());
         } else {
             readToRecord(ScoreRecord, scoreFile);
