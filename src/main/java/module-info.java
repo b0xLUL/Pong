@@ -8,7 +8,6 @@ module com.pong {
     exports com.pong.entities.paddles.types;
     exports com.pong.entities;
     exports com.pong.shared.util;
-    exports com.pong.shared.buttons;
     exports com.pong.shared.records;
 
 //    opens audio;

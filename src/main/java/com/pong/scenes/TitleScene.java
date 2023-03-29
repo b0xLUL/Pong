@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.pong.PongGame;
 import com.pong.entities.buttons.ExitButton;
-import com.pong.shared.buttons.OptionsButton;
+import com.pong.entities.buttons.OptionsButton;
 import com.pong.entities.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
