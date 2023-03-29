@@ -28,12 +28,7 @@ public class TitleScene extends StaticScene {
         setBackgroundColor(Color.BLACK);
         setBackgroundAudio("audio/backgroundmusic.wav");
 
-        var upperLimit = 1.0d;
-        var lowerLimit = 0.0d;
-        var oldRange = (100.0 - 0.0);
-        var newRange = (upperLimit - lowerLimit);
-        var constrainedVolume = (((settingsRecord.getVolume() - 0.0) * newRange) / oldRange) + lowerLimit;
-
+        var constrainedVolume = (settingsRecord.getVolume() / 100);
         setBackgroundAudioVolume(constrainedVolume);
     }
 
