@@ -6,6 +6,8 @@ package com.pong.shared.records;
  * @author Mels Ubbink
  */
 public record Settings() {
+
+    //Instance fields are NOT ALLOWED IN RECORDS, thats why these are static
     private static final double DefaultVolume = 100;
     private static double volume;
 

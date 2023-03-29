@@ -1,6 +1,8 @@
 package com.pong.shared.records;
 
 public record Score() {
+
+    //Instance fields are NOT ALLOWED IN RECORDS, thats why these are static
     private static int playerScore;
     private static int computerScore;
     private static int highScore;
