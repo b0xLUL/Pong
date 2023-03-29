@@ -21,16 +21,15 @@ public class OptionsMenu extends DynamicScene {
 
     private VolumeText currentVolumeText;
 
-    public OptionsMenu(PongGame pongGameObject, FileHandler settingsFile) {
+    public OptionsMenu(PongGame pongGameObject) {
         this.pongGameObject = pongGameObject;
         this.settingsRecord = pongGameObject.SettingsRecord;
-        this.settingsFile = settingsFile;
+        this.settingsFile = pongGameObject.settingFile;
     }
 
     @Override
     public void setupScene() {
         setBackgroundColor(Color.BLACK);
-
     }
 
     @Override

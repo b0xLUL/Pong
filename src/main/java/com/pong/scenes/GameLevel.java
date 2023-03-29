@@ -32,11 +32,11 @@ public class GameLevel extends DynamicScene implements KeyListener {
     public PlayerPaddle playerPaddle;
     public ComputerPaddle computerPaddle;
 
-    public GameLevel(PongGame pongGameObject, FileHandler scoreFile) {
+    public GameLevel(PongGame pongGameObject) {
         this.pongGameObject = pongGameObject;
         scoreRecord = pongGameObject.ScoreRecord;
 
-        this.scoreFile = scoreFile;
+        this.scoreFile = pongGameObject.scoreFile;
         settingsRecord = pongGameObject.SettingsRecord;
     }
 

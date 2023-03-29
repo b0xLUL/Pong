@@ -48,8 +48,8 @@ public class PongGame extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene(this));
-        addScene(1, new GameLevel(this, scoreFile));
-        addScene(2, new OptionsMenu(this, settingFile));
+        addScene(1, new GameLevel(this));
+        addScene(2, new OptionsMenu(this));
     }
 
     private void readToSettingsRecord(Settings record, FileHandler recordFile) {
