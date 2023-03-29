@@ -1,4 +1,4 @@
-package com.pong.entities.settings.volumeadjust.audiosetting.buttons;
+package com.pong.entities.settings.volumeadjust.audiosetting;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;

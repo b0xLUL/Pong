@@ -8,7 +8,7 @@ import com.pong.entities.settings.volumeadjust.TopText;
 import com.pong.entities.settings.volumeadjust.audiosetting.VolumeText;
 import com.pong.entities.settings.volumeadjust.audiosetting.buttons.DecreaseButton;
 import com.pong.entities.settings.volumeadjust.audiosetting.buttons.IncreaseButton;
-import com.pong.entities.settings.volumeadjust.audiosetting.buttons.SettingText;
+import com.pong.entities.settings.volumeadjust.audiosetting.SettingText;
 import com.pong.shared.records.Settings;
 import com.pong.shared.util.FileHandler;
 import javafx.scene.paint.Color;
