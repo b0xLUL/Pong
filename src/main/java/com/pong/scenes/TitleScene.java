@@ -8,6 +8,7 @@ import com.pong.PongGame;
 import com.pong.entities.buttons.ExitButton;
 import com.pong.entities.buttons.OptionsButton;
 import com.pong.entities.buttons.StartButton;
+import com.pong.shared.records.Settings;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -15,14 +16,25 @@ import javafx.scene.text.FontWeight;
 public class TitleScene extends StaticScene {
 
     private final PongGame pongGameObject;
+    private final Settings settingsRecord;
 
     public TitleScene(PongGame pongGameObject) {
         this.pongGameObject = pongGameObject;
+        settingsRecord = pongGameObject.SettingsRecord;
     }
 
     @Override
     public void setupScene() {
         setBackgroundColor(Color.BLACK);
+        setBackgroundAudio("audio/backgroundmusic.wav");
+
+        var upperLimit = 1.0d;
+        var lowerLimit = 0.0d;
+        var oldRange = (100.0 - 0.0);
+        var newRange = (upperLimit - lowerLimit);
+        var constrainedVolume = (((settingsRecord.getVolume() - 0.0) * newRange) / oldRange) + lowerLimit;
+
+        setBackgroundAudioVolume(constrainedVolume);
     }
 
     @Override

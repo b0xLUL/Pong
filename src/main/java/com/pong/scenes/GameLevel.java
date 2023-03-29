@@ -9,6 +9,7 @@ import com.pong.entities.ScoreText;
 import com.pong.entities.paddles.types.ComputerPaddle;
 import com.pong.entities.paddles.types.PlayerPaddle;
 import com.pong.shared.records.Score;
+import com.pong.shared.records.Settings;
 import com.pong.shared.util.FileHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
@@ -21,6 +22,7 @@ public class GameLevel extends DynamicScene implements KeyListener {
     public ArrayList<PongBall> pongBalls = new ArrayList<>();
     public PongGame pongGameObject;
     private final Score scoreRecord;
+    private final Settings settingsRecord;
     private final FileHandler scoreFile;
 
     public ScoreText playerScoreText;
@@ -35,11 +37,19 @@ public class GameLevel extends DynamicScene implements KeyListener {
         scoreRecord = pongGameObject.ScoreRecord;
 
         this.scoreFile = scoreFile;
+        settingsRecord = pongGameObject.SettingsRecord;
     }
 
     @Override
     public void setupScene() {
+        var upperLimit = 1.0d;
+        var lowerLimit = 0.0d;
+        var oldRange = (100.0 - 0.0);
+        var newRange = (upperLimit - lowerLimit);
+        var constrainedVolume = (((settingsRecord.getVolume() - 0.0) * newRange) / oldRange) + lowerLimit;
 
+        setBackgroundAudio("audio/backgroundmusic.wav");
+        setBackgroundAudioVolume(constrainedVolume);
     }
 
     @Override
