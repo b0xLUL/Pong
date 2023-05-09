@@ -1,6 +1,5 @@
 package com.pong.entities.paddles;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -12,7 +11,7 @@ import com.pong.entities.PongBall;
 
 import java.util.List;
 
-public class Paddle extends DynamicRectangleEntity implements SceneBorderTouchingWatcher, Collided {
+public abstract class Paddle extends DynamicRectangleEntity implements SceneBorderTouchingWatcher, Collided {
 
     Coordinate2D initialPosition;
 
