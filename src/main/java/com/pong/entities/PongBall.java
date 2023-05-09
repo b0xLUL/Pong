@@ -54,6 +54,6 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
 
     public void collidedWithPaddle(Paddle collidingPaddle) {
         bounceBall(0);
-        setSpeed(getSpeed() + (collidingPaddle.getSpeed()/4));
+        setSpeed(Math.min(getSpeed() + collidingPaddle.getSpeed()/4, 11));
     }
 }
