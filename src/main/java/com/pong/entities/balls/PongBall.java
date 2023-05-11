@@ -1,4 +1,4 @@
-package com.pong.entities;
+package com.pong.entities.balls;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
@@ -14,8 +14,9 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
 
     public GameLevel gameLevelObject;
     public Random r;
+    public double maxSpeed;
 
-    public PongBall(Coordinate2D initialLocation, double radius, GameLevel gameLevelObject) {
+    public PongBall(Coordinate2D initialLocation, double radius, GameLevel gameLevelObject, Color color, double maxSpeed) {
         super(initialLocation);
 
         r = new Random();
@@ -23,11 +24,12 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
         int dir = r.nextInt(0, 2) == 1 ? 1 : -1;
         int angle = r.nextInt(90-45, 90+45);
 
-        setFill(Color.RED);
+        setFill(color);
         setRadius(radius);
         setMotion(4,angle * dir);
 
         this.gameLevelObject = gameLevelObject;
+        this.maxSpeed = maxSpeed;
     }
 
     @Override
@@ -54,6 +56,6 @@ public class PongBall extends DynamicCircleEntity implements Collider, UpdateExp
 
     public void collidedWithPaddle(Paddle collidingPaddle) {
         bounceBall(0);
-        setSpeed(Math.min(getSpeed() + collidingPaddle.getSpeed()/4, 11));
+        setSpeed(Math.min(getSpeed() + collidingPaddle.getSpeed()/4, maxSpeed));
     }
 }

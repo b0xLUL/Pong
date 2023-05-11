@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.pong.entities.PongBall;
+import com.pong.entities.balls.PongBall;
 
 import java.util.List;
 

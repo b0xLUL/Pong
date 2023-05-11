@@ -11,4 +11,5 @@ module com.pong {
     exports com.pong.shared.records;
 
     opens audio;
+    exports com.pong.entities.balls;
 }

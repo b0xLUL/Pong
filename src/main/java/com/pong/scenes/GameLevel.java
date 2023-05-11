@@ -4,8 +4,11 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.pong.PongGame;
-import com.pong.entities.PongBall;
+import com.pong.entities.balls.PongBall;
 import com.pong.entities.ScoreText;
+import com.pong.entities.balls.types.FastBall;
+import com.pong.entities.balls.types.NormalBall;
+import com.pong.entities.balls.types.RandomBall;
 import com.pong.entities.paddles.types.ComputerPaddle;
 import com.pong.entities.paddles.types.PlayerPaddle;
 import com.pong.shared.records.Score;
@@ -16,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 
 public class GameLevel extends DynamicScene implements KeyListener {
@@ -78,12 +82,34 @@ public class GameLevel extends DynamicScene implements KeyListener {
     }
 
     public void createPongBall() {
+        Random random = new Random();
+        int index = random.nextInt(3);
 
-        pongBalls.add(new PongBall(
-           new Coordinate2D(getWidth()/2, getHeight()/2),
-           10,
-           this
-        ));
+        if (index == 0) {
+            PongBall ball = new NormalBall(
+                new Coordinate2D(getWidth()/2, getHeight()/2),
+                10,
+                this
+            );
+
+            pongBalls.add(ball);
+        } else if (index == 1) {
+            PongBall ball = new FastBall(
+                new Coordinate2D(getWidth()/2, getHeight()/2),
+                10,
+                this
+            );
+
+            pongBalls.add(ball);
+        } else {
+            PongBall ball = new RandomBall(
+                new Coordinate2D(getWidth()/2, getHeight()/2),
+                10,
+                this
+            );
+
+            pongBalls.add(ball);
+        }
 
         addEntity( pongBalls.get(pongBalls.size()-1) );
     }
